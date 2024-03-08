@@ -1,0 +1,67 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="tenDiem">Tên điểm</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tenDiem"
+          required
+          [(ngModel)]="diemkhoan.tenDiem"
+          name="tenDiem"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="diaDanh">Địa danh</label>
+        <input
+          class="form-control"
+          id="diaDanh"
+          required
+          [(ngModel)]="diemkhoan.diaDanh"
+          name="diaDanh"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="doSau">Độ sâu</label>
+        <input
+          class="form-control"
+          id="doSau"
+          required
+          [(ngModel)]="diemkhoan.doSau"
+          name="doSau"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="ngayKhoan">Ngày khoan</label>
+        <input
+          class="form-control"
+          id="ngayKhoan"
+          required
+          [(ngModel)]="diemkhoan.ngayKhoan"
+          name="ngayKhoan"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tenNguoiKhoan">Tên người khoan</label>
+        <input
+          class="form-control"
+          id="tenNguoiKhoan"
+          required
+          [(ngModel)]="diemkhoan.tenNguoiKhoan"
+          name="tenNguoiKhoan"
+        />
+      </div>
+
+      <button (click)="saveDiemKhoan()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>diemkhoan was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newDiemKhoan()">Add</button>
+    </div>
+  </div>
+</div>

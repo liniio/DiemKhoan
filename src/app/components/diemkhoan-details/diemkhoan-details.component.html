@@ -1,0 +1,107 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentDiemKhoan.id">
+    <h4>Tutorial</h4>
+    <div>
+      <label><strong>Tên điểm:</strong></label> {{ currentDiemKhoan.tenDiem }}
+    </div>
+    <div>
+      <label><strong>Địa danh:</strong></label>
+      {{ currentDiemKhoan.diaDanh }}
+    </div>
+    <div>
+      <label><strong>Độ sâu:</strong></label>
+      {{ currentDiemKhoan.doSau }}
+    </div>
+    <div>
+      <label><strong>Ngày khoan:</strong></label>
+      {{ currentDiemKhoan.ngayKhoan }}
+    </div>
+    <div>
+      <label><strong>Tên người khoan:</strong></label>
+      {{ currentDiemKhoan.tenNguoiKhoan }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="/diemkhoanls/{{ currentDiemKhoan.id }}"
+    >
+      Edit
+    </a>
+  </div>
+  <div *ngIf="!currentDiemKhoan">
+    <br />
+    <p>Vui lòng click vào 1 điểm khoan</p>
+  </div>
+</div>
+<ng-template #editable>
+  <div *ngIf="currentDiemKhoan.id" class="edit-form">
+    <h4>Điểm khoan</h4>
+    <form>
+      <div class="form-group">
+        <label for="tenDiem">Tên điểm</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tenDiem"
+          [(ngModel)]="currentDiemKhoan.tenDiem"
+          name="tenDiem"
+        />
+      </div>
+      <div class="form-group">
+        <label for="diaDanh">Địa danh</label>
+        <input
+          type="text"
+          class="form-control"
+          id="diaDanh"
+          [(ngModel)]="currentDiemKhoan.diaDanh"
+          name="diaDanh"
+        />
+      </div>
+      <div class="form-group">
+        <label for="doSau">Độ sâu</label>
+        <input
+          type="number"
+          class="form-control"
+          id="doSau"
+          [(ngModel)]="currentDiemKhoan.doSau"
+          name="diaDanh"
+        />
+      </div>
+      <div class="form-group">
+        <label for="ngayKhoan">Ngày khoan</label>
+        <input
+          type="text"
+          class="form-control"
+          id="ngayKhoan"
+          [(ngModel)]="currentDiemKhoan.ngayKhoan"
+          name="ngayKhoan"
+        />
+      </div>
+      <div class="form-group">
+        <label for="tenNguoiKhoan">Tên người khoan</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tenNguoiKhoan"
+          [(ngModel)]="currentDiemKhoan.tenNguoiKhoan"
+          name="tenNguoiKhoan"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteDiemKhoan()">
+      Delete
+    </button>
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateDiemKhoan()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div *ngIf="!currentDiemKhoan.id">
+    <br />
+    <p>Cannot access this điểm khoan...</p>
+  </div>
+</ng-template>

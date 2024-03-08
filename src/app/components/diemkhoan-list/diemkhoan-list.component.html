@@ -1,0 +1,76 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Tìm theo tên điểm"
+        [(ngModel)]="tenDiem"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTenDiem()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Danh sách điểm khoan</h4>
+    <!-- <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let diemkhoan of diemkhoanls; let i = index"
+        [class.active]="i == currentIndex"
+        29
+        (click)="setActiveDiemKhoan(diemkhoan, i)"
+      >
+        {{ diemkhoan.tenDiem }}
+      </li>
+    </ul> -->
+    <table
+      class="table table-striped table-responsive-md"
+      style="min-width: 700px"
+    >
+      <thead>
+        <tr>
+          <th>Tên điểm</th>
+          <th>Địa danh</th>
+          <th>Độ sâu</th>
+          <th>Ngày khoan</th>
+          <th>Người khoan</th>
+          <th>Tùy chọn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let diemkhoan of diemkhoanls; let i = index">
+          <td>{{ diemkhoan.tenDiem }}</td>
+          <td>{{ diemkhoan.diaDanh }}</td>
+          <td>{{ diemkhoan.doSau }}</td>
+          <td>{{ diemkhoan.ngayKhoan }}</td>
+          <td>{{ diemkhoan.tenNguoiKhoan }}</td>
+          <td>
+            <a
+              class="btn btn-warning"
+              [routerLink]="'/diemkhoanls/' + diemkhoan.id"
+            >
+              <i class="fa fa-edit"></i> Edit
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllDiemKhoan()">
+      Remove All
+    </button>
+  </div>
+  <!-- <div class="col-md-6">
+    <app-tutorial-details
+      [viewMode]="true"
+      [currentTutorial]="currentDiemKhoan"
+    ></app-tutorial-details>
+  </div> -->
+</div>
